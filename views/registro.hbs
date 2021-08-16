@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="d-flex mx-3 w-100">
+        <img src="images/icono.png" style="height:40px">
+        <a class="navbar-brand mx-3" href="/">NPSYDB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/registro">Registro</a>
+                <a class="nav-link" href="/login">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container w-50">
+        <div class="my-5">
+            <h1 class="text-center">Registro</h1>
+        </div>
+        <div class="w-50 mx-auto">
+            <form method="post" action="/registro">
+                <div class="form-group">
+                    <label for="username">Nombre de usuario<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="username" id="username">
+                </div>
+                <div class="form-group">
+                    <label for="pass">Contraseña<span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" name="pass" id="pass">
+                </div>
+                <div class="form-group">
+                    <label for="mail">Dirección de correo<span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" name="email" id="email">
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-info mt-3">Registrarse</button>
+                </div>
+            </form>
+            <p class="text-danger text-center mt-3">{{message}}</p>
+        </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container w-50">
+    <div class="my-5">
+        <h1 class="text-center">Actualizar datos</h1>
+    </div>
+    <div class="mx-auto">
+        <form method="post" action="/admin/dominios/update/{{registro.id}}">
+            <div class="form-group">
+                <label for="es">Dominio (es)</label>
+                <input type="text" class="form-control" name="es" id="es" value="{{registro.es}}">
+            </div>
+            <div class="form-group">
+                <label for="en">Dominio (en)</label>
+                <input type="text" class="form-control" name="en" id="en" value="{{registro.en}}">
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-info mt-3">Actualizar</button>
+            </div>
+        </form>
+    </div>
+</div>

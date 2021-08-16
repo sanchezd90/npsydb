@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="d-flex mx-3 w-100">
+        <img src="./../eimages/icono.png" style="height:40px">
+        <a class="navbar-brand mx-3" href="/">NPSYDB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/registro">Registro</a>
+                <a class="nav-link" href="/login">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="my-5">
+        <h1>Publicaciones en las que figura</h1>
+    </div>
+    <div class="d-flex">
+        <div class="mb-5 w-75">
+            {{#each publicaciones}}
+            <div class="d-flex py-3 my-3 border-bottom">
+                <a href="/publicacion/{{id}}"><p>{{ref_completa}}</p></a>                                                
+            </div>
+            {{/each}}
+        </div>
+        <div class="d-none container d-flex flex-wrap justify-content-start px-5 w-25">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="d-flex mx-3 w-100">
+        <img src="./../images/icono.png" style="height:40px">
+        <a class="navbar-brand mx-3" href="/">NPSYDB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="mt-5">
+        <h1>
+            {{dominio.es}}
+        </h1>
+    </div>
+    <div class="d-flex flex-wrap justify-content-between mt-3 mb-5 domain-bar border rounded-pill px-2">
+        {{#each dominios}}        
+        <a href="/dominio/{{id}}" class="my-1">
+            <div class="btn domain-btn" style="width:115px;height:70px">
+                <p class="center" style="font-size: smaller;">{{es}}</p>
+            </div>
+        </a>        
+        {{/each}}
+    </div>
+    <div class="d-flex">
+        <div class="mb-5 w-75">
+            {{#each pruebas}}
+            <div class="d-flex py-3 my-3 border-bottom">
+                <a href="/prueba/{{id}}"><h4 class="btn border mx-3 px-2 py-2 rounded-pill btn-pill" style="width:150px">{{acronimo}}</h4></a>
+                <div class="d-flex align-items-center">
+                    <h5>{{nombre_principal}}</h5>
+                </div>
+            </div>
+            {{/each}}
+    </div>
+    <div class="d-none container d-flex flex-wrap justify-content-start px-5 w-25">
+    </div>
+    </div>
+
+</div>

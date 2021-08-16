@@ -1,0 +1,79 @@
+/*---------------------Navbar----------------------------*/
+
+.navbar{
+     background-color:#155a95;
+}
+
+.navbar-light .navbar-brand{
+     color:white;
+}
+
+.navbar-light .navbar-nav .nav-link{
+     color:white;  
+}
+
+/*---------------------Footer----------------------------*/
+
+.bg-light {
+     background-color:#467196!important;
+}
+
+/*---------------------General----------------------------*/
+
+a {
+     color:rgb(55, 55, 55);
+     text-decoration: none!important;
+ }
+a h4 {
+     text-decoration: none!important;
+ }
+a h4:hover {
+      text-decoration: none!important;
+      color:white
+  } 
+
+.bg-main {
+     background-color: #155a95;
+}
+
+
+
+.btn {
+     position: relative;
+   }
+
+.btn-info{
+     background-color:#155a95;
+     border-color: #155a95;
+     color:white; 
+}
+
+.btn-info:hover{
+     background-color:#114e83;
+     border-color: #114e83;
+     color:white;
+}
+
+.btn-main{
+     background-color:#a5cff2;
+}
+.btn-main:hover {
+     color:white;
+}
+
+.center {
+     margin: 0;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+   }
+
+.domain-btn:hover{
+     font-weight:bold!important;
+     color:#155a95;
+}
+.btn-pill:hover{
+     color:#155a95;
+}

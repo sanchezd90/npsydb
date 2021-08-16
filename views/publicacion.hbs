@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="d-flex mx-3 w-100">
+        <img src="./../images/icono.png" style="height:40px">
+        <a class="navbar-brand mx-3" href="/">NPSYDB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/registro">Registro</a>
+                <a class="nav-link" href="/login">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="my-5">
+        <h1>
+            {{publicacion.titulo}}
+        </h1>
+    </div>
+    <div>
+        <div>
+            <h5>Autores</h5>
+            {{#each autores}}
+            <a href="/publicacion/autor/{{autor}}"><p>{{autor}}</p></a>
+            {{/each}}
+        </div>
+        <div>
+            <h5>Año</h5>
+            <p>{{publicacion.year}}</p>
+        </div>
+        <div>
+            <h5>Journal</h5>
+            <a href="/publicacion/journal/{{publicacion.journal}}"><p>{{publicacion.journal}}</p></a>
+        </div>
+        <div>
+            <h5>Volume</h5>
+            <p>{{publicacion.volume}}</p>
+        </div>
+        <div>
+            <h5>Pages</h5>
+            <p>{{publicacion.pages}}</p>
+        </div>
+        <div>
+            <h5>Link externo</h5>
+            <p>{{publicacion.link}}</p>
+        </div>
+        <div>
+            <h5>Referencia completa</h5>
+            <p>{{publicacion.ref_completa}}</p>
+        </div>
+    </div>
+</div>
