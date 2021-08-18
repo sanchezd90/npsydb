@@ -5,6 +5,7 @@ const {filterDominio,filterName,getPrueba,getAll:allTests} = require('./../model
 const {verifyUser, verifyAdmin} = require('./../middlewares/auth');
 const {filterPropositos,filterByPrueba} = require('./../models/propositos');
 const modelReferencias = require('./../models/referencias');
+const pmc = require('./../utils/pmc');
 
 const getDominios = async (req,res) =>{
   dominios = await getAll();
@@ -20,6 +21,8 @@ const showDominio = async(req,res) =>{
 const prueba = async(req,res) =>{
   const {id} = req.params;
   const [prueba] = await getPrueba(id);
+  const results = await pmc.searchInTitle(prueba.nombre_principal);
+  await pmc.getDocumentByID("1");
   const dominios = await getAll();
   const propositos = await filterByPrueba(id);
   const referencias = await modelReferencias.filterByPrueba(id);
