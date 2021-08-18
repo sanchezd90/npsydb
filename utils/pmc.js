@@ -17,7 +17,7 @@ const searchInTitle = async(termString) => {
     return idList;        
   }
 const getDocumentByID = async(pmcId) => {
-    const url= "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=8059185";
+    const url= "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id="+pmcId;
     const {data} = await axios.get(url);
     var document = {};
     parseString(data, (err, result) => {
@@ -28,17 +28,17 @@ const getDocumentByID = async(pmcId) => {
       try{
         document['journal'] = result['journal-meta'][0]['journal-title-group'][0]['journal-title'][0];
       }catch(e){
-        console.log('not found')        
+        console.log(e);        
       }
       try{
         document['doi']= result['article-meta'][0]['article-id'][3]['_'];
       }catch(e){
-        console.log('not found')        
+        console.log(e);     
       }
       try{
         document['title']= result['article-meta'][0]['title-group'][0]['article-title'][0];
       }catch(e){
-        console.log('not found')        
+        console.log(e);     
       }
       try{
         document['authors']= [];
@@ -57,7 +57,7 @@ const getDocumentByID = async(pmcId) => {
           document['authors'].push([surname.trim(),givenName.trim()])
         })
       }catch(e){
-        console.log('not found')        
+        console.log(e);        
       }
       try{
         const pubDate= result['article-meta'][0]['pub-date'][0];
@@ -66,12 +66,12 @@ const getDocumentByID = async(pmcId) => {
         document['pubDate']['month']=pubDate['month'][0];
         document['pubDate']['day']=pubDate['day'][0];
       }catch(e){
-        console.log('not found')        
+        console.log(e);        
       }
       try{
         document['license']= result['article-meta'][0]['permissions'][0]['license'][0]['ali:license_ref'][0]['_'];
       }catch(e){
-        console.log('not found')        
+        console.log(e);        
       }
       try{
         let abstract="";
@@ -83,7 +83,24 @@ const getDocumentByID = async(pmcId) => {
         })
         document['abstract']=abstract;
       }catch(e){
-        console.log('not found')        
+        console.log(e);        
+      }
+    });
+    return document;        
+  }
+const getDocumentTitleByID = async(pmcId) => {
+    const url= "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id="+pmcId;
+    const {data} = await axios.get(url);
+    var document = {};
+    parseString(data, (err, result) => {
+      if(err) {
+          throw err;
+      }
+      result=result['pmc-articleset']['article'][0]['front'][0];      
+      try{
+        document['title']= result['article-meta'][0]['title-group'][0]['article-title'][0];
+      }catch(e){  
+        console.log("");  
       }
     });
     return document;        
@@ -91,4 +108,4 @@ const getDocumentByID = async(pmcId) => {
 
 
 
-module.exports ={searchInTitle,getDocumentByID};
+module.exports ={searchInTitle,getDocumentByID,getDocumentTitleByID};

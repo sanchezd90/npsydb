@@ -19,31 +19,11 @@
             {{prueba.nombre_principal}}
         </h1>
     </div>
-    <div class="d-none d-flex flex-wrap justify-content-between mt-3 mb-5 domain-bar">
-        {{#each dominios}}        
-        <a href="/dominio/{{id}}" class="my-1">
-            <div class="btn domain-border" style="width:115px;height:70px">
-                <p class="center" style="font-size: smaller;">{{es}}</p>
-            </div>
-        </a>        
-        {{/each}}
-    </div>
-    <div class="d-flex">
-        {{#each propositos}}
-         <a href="/proposito/{{id}}"><h4 class="btn border mx-1 px-3 py-2 rounded-pill btn-pill">{{es}}</h4></a>
-        {{/each}}
-    </div>
-    <div class="d-flex">
-         <a href="/recent/{{id}}"><h4 class="btn border mx-1 px-3 py-2 rounded-pill btn-pill">Ver artículos recientes</h4></a>        
-    </div>
     <div class="my-5 w-75">
         <h5 class="mb-4">Publicaciones asociadas</h5>
-        {{#each referencias}}
+        {{#each articleList}}
         <div class="d-flex border-bottom py-2">
-            <div class="d-flex align-items-center">
-                <a href="./../publicacion/{{id}}"><p>{{ref_completa}}</p></a>
-            </div>
-            <a href="https://www.google.com/search?q={{titulo}}"><p class="btn border mx-2 px-3 py-2 rounded-pill btn-pill">🔎</p></a>
+            <p>{{title}}</p>
         </div>
         {{/each}}
     </div>

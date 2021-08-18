@@ -18,15 +18,32 @@ const showDominio = async(req,res) =>{
   const dominios = await getAll();
   res.render('dominio',{dominio,pruebas,dominios})
 }
+
 const prueba = async(req,res) =>{
   const {id} = req.params;
   const [prueba] = await getPrueba(id);
-  const results = await pmc.searchInTitle(prueba.nombre_principal);
-  await pmc.getDocumentByID("1");
   const dominios = await getAll();
   const propositos = await filterByPrueba(id);
   const referencias = await modelReferencias.filterByPrueba(id);
-  res.render('prueba',{prueba,dominios,propositos,referencias})
+  res.render('prueba',{id,prueba,dominios,propositos,referencias})
+}
+
+const showRecent = async(req,res) => {
+  const {id} = req.params;
+  const [prueba] = await getPrueba(id);
+  console.log(prueba);
+  console.log(prueba.nombre_principal);
+  const results = await pmc.searchInTitle(prueba.nombre_principal);
+  const articleList = [];
+  for (let i=0;i<10;i++){
+    try{
+      const document = await pmc.getDocumentTitleByID(results[i]);
+      articleList.push(document);
+    }catch(e){
+      console.log("");
+    }
+  };
+  res.render('recent',{prueba,articleList});
 }
 
 const buscador = async(req, res) => {
@@ -58,8 +75,10 @@ const addAcronym = async(prueba) =>{
 router.get('/', getDominios);
 router.get('/dominio/:id', showDominio);
 router.post('/busqueda', buscador);
+router.get('/recent/:id', showRecent);
 router.get('/prueba/:id',prueba);
 router.get('/proposito/:id',showProposito);
 router.get('/all',showAll);
+
 
 module.exports = router;
